@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -50,5 +51,15 @@ class TrianguloTest {
         double[] lados = triangulo.ordenarLados();
         String tipo = triangulo.verificarTipoTriangulo(lados);
         assertNotEquals("Nao foi possivel determinar o tipo de triangulo.", tipo);
+    }
+
+    @Test
+    void onlyPositiveNumbers_shouldThrowIllegalArgumentException_whenAnyOfTheArgumentsIsNegative() {
+        // Arrange
+        Triangulo triangulo = new Triangulo(1.0, 2.0, 3.0);
+        double[] numbers = {-1.0, 2.0, 3.0};
+
+        // Act and Assert
+        Assertions.assertThrows(IllegalArgumentException.class, () -> triangulo.onlyPositiveNumbers(numbers));
     }
 }

@@ -56,4 +56,12 @@ public class Triangulo {
 
         return "Nao foi possivel determinar o tipo de triangulo.";
     }
+
+    public void onlyPositiveNumbers(double... numbers){
+        for (double number : numbers) {
+            if (number <= 0) {
+                throw new IllegalArgumentException("All numbers must be positive.");
+            }
+        }
+    }
 }
